@@ -37,7 +37,6 @@ script:
 - mv -f rootfs.tar.gz ./out/
 - cd out
 - zip Alpine.zip *
-- ls
 - cd ..
 notifications:
   email: false
