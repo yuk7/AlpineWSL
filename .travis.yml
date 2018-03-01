@@ -25,7 +25,7 @@ script:
 - 
 - sudo rm -rf ./root/*
 - 
-- sudo tar -zcpf ../rootfs.tar.gz *
+- sudo tar -zcpf ../rootfs.tar.gz `sudo ls`
 - sudo chown `id -un` ../rootfs.tar.gz
 - cd ..
 - 
