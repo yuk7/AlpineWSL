@@ -6,7 +6,7 @@ ROOTFS_VER_R="0"
 ROOTFS_FN="alpine-minirootfs-${ROOTFS_VER}.${ROOTFS_VER_R}-${ARCH}.tar.gz"
 ROOTFS_URL="http://dl-cdn.alpinelinux.org/alpine/v${ROOTFS_VER}/releases/${ARCH}/${ROOTFS_FN}"
 
-GLIBC_VER="2.26-r0"
+GLIBC_VER="2.27-r0"
 GLIBC_FN="glibc-${GLIBC_VER}.apk"
 GLIBC_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/${GLIBC_FN}"
 
