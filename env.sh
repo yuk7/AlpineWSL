@@ -10,7 +10,7 @@ GLIBC_VER="2.27-r0"
 GLIBC_FN="glibc-${GLIBC_VER}.apk"
 GLIBC_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/${GLIBC_FN}"
 
-LNCR_BLD="18010300"
+LNCR_BLD="18030400"
 LNCR_ZIP="icons.zip"
 LNCR_FN="Alpine.exe"
 LNCR_URL="https://github.com/yuk7/WSL-DistroLauncher/releases/download/${LNCR_BLD}/${LNCR_ZIP}"
