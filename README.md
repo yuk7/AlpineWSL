@@ -2,7 +2,7 @@
 Alpine Linux on WSL (Windows 10 FCU or later)
 
 
-![screenshot](https://raw.githubusercontent.com/wiki/yuk7/WSL-DistroLauncher/img/Arch_Alpine_Ubuntu.png)
+![screenshot](https://raw.githubusercontent.com/wiki/yuk7/wsldl/img/Arch_Alpine_Ubuntu.png)
 
 [![Build Status](https://img.shields.io/travis/yuk7/AlpineWSL.svg?style=flat-square)](https://travis-ci.org/yuk7/AlpineWSL)
 [![Github All Releases](https://img.shields.io/github/downloads/yuk7/AlpineWSL/total.svg?style=flat-square)](https://github.com/yuk7/AlpineWSL/releases/latest)

@@ -13,7 +13,7 @@ GLIBC_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIB
 LNCR_BLD="18062100"
 LNCR_ZIP="icons.zip"
 LNCR_FN="Alpine.exe"
-LNCR_URL="https://github.com/yuk7/WSL-DistroLauncher/releases/download/${LNCR_BLD}/${LNCR_ZIP}"
+LNCR_URL="https://github.com/yuk7/wsldl/releases/download/${LNCR_BLD}/${LNCR_ZIP}"
 
 
 if type curl >/dev/null 2>&1 ;then
