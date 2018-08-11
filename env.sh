@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ARCH="x86_64"
-ROOTFS_VER="3.7"
+ROOTFS_VER="3.8"
 ROOTFS_VER_R="0"
 ROOTFS_FN="alpine-minirootfs-${ROOTFS_VER}.${ROOTFS_VER_R}-${ARCH}.tar.gz"
 ROOTFS_URL="http://dl-cdn.alpinelinux.org/alpine/v${ROOTFS_VER}/releases/${ARCH}/${ROOTFS_FN}"
