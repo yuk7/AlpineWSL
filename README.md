@@ -61,3 +61,11 @@ Useage :
 >Alpine.exe clean
 
 ```
+
+## How-to-Build
+AlpineWSL can build on GNU/Linux or WSL.
+
+`curl`,`zip`,`unzip`,`tar`(gnu) and `sudo` is required for build.
+```shell
+$ make
+```
