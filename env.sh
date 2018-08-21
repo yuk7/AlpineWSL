@@ -1,10 +1,10 @@
 #!/bin/bash
 
 ARCH="x86_64"
-ROOTFS_VER="3.8"
-ROOTFS_VER_R="0"
-ROOTFS_FN="alpine-minirootfs-${ROOTFS_VER}.${ROOTFS_VER_R}-${ARCH}.tar.gz"
-ROOTFS_URL="http://dl-cdn.alpinelinux.org/alpine/v${ROOTFS_VER}/releases/${ARCH}/${ROOTFS_FN}"
+BASE_VER="3.8"
+BASE_VER_R="0"
+BASE_FN="alpine-minirootfs-${BASE_VER}.${BASE_VER_R}-${ARCH}.tar.gz"
+BASE_URL="http://dl-cdn.alpinelinux.org/alpine/v${BASE_VER}/releases/${ARCH}/${BASE_FN}"
 
 GLIBC_VER="2.27-r0"
 GLIBC_FN="glibc-${GLIBC_VER}.apk"
