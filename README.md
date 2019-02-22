@@ -1,5 +1,5 @@
 # AlpineWSL
-Alpine Linux on WSL (Windows 10 FCU or later)
+Alpine Linux on WSL (Windows 10 1803 or later)
 based on [wsldl](https://github.com/yuk7/wsldl)
 
 ![screenshot](https://raw.githubusercontent.com/wiki/yuk7/wsldl/img/Arch_Alpine_Ubuntu.png)
@@ -13,7 +13,7 @@ based on [wsldl](https://github.com/yuk7/wsldl)
 
 
 ## Requirements
-* Windows 10 1709 Fall Creators Update 64bit or later.
+* Windows 10 1803 April 2018 Update x64 or later.
 * Windows Subsystem for Linux feature is enabled.
 
 ## Install
