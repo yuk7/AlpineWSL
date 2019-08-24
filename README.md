@@ -29,12 +29,12 @@ If you rename it you can register with a diffrent name and have multiple install
 ## How-to-Use(for Installed Instance)
 #### exe Usage
 ```dos
-Useage :
+Usage :
     <no args>
-      - Launches the distro's default behavior. By default, this launches your default shell.
+      - Open a new shell with your default settings.
 
     run <command line>
-      - Run the given command line in that distro.
+      - Run the given command line in that distro. Inherit current directory.
 
     config [setting [value]]
       - `--default-user <user>`: Set the default user for this distro to <user>
@@ -48,8 +48,11 @@ Useage :
       - `--mount-drive`: Get on/off status of Mount drives
       - `--lxuid`: Get LxUID key for this distro
 
+    backup
+      - Output backup.tar.gz to the current directory using tar command.
+
     clean
-     - Uninstalls the distro.
+      - Uninstall the distro.
 
     help
       - Print this usage message.
