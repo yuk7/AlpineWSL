@@ -23,7 +23,7 @@ based on [wsldl](https://github.com/yuk7/wsldl)
 
 #### 3.Run Alpine.exe to Extract rootfs and Register to WSL
 Exe filename is using to the instance name to register.
-If you rename it you can register with a diffrent name and have multiple installs.
+If you rename it, you can register with a different name and have multiple installs.
 
 
 ## How-to-Use(for Installed Instance)
