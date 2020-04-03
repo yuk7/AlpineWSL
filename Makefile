@@ -12,7 +12,7 @@ all: $(OUT_ZIP)
 zip: $(OUT_ZIP)
 $(OUT_ZIP): ziproot
 	@echo -e '\e[1;31mBuilding $(OUT_ZIP)\e[m'
-	cd ziproot; zip ../$(OUT_ZIP) *
+	cd ziproot; bsdtar -a -cf ../$(OUT_ZIP) *
 
 ziproot: Launcher.exe rootfs.tar.gz
 	@echo -e '\e[1;31mBuilding ziproot...\e[m'
@@ -23,7 +23,7 @@ ziproot: Launcher.exe rootfs.tar.gz
 exe: Launcher.exe
 Launcher.exe: icons.zip
 	@echo -e '\e[1;31mExtracting Launcher.exe...\e[m'
-	unzip icons.zip $(LNCR_ZIP_EXE)
+	bsdtar -xvf icons.zip $(LNCR_ZIP_EXE)
 	mv $(LNCR_ZIP_EXE) Launcher.exe
 
 icons.zip:
