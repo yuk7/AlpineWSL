@@ -13,7 +13,8 @@ based on [wsldl](https://github.com/yuk7/wsldl)
 
 
 ## Requirements
-* Windows 10 1803 April 2018 Update x64 or later.
+* Windows 10 1803 April 2018 Update x64/arm64 or later.
+* Windows 11 x64/arm64 or later.
 * Windows Subsystem for Linux feature is enabled.
 
 ## Install
