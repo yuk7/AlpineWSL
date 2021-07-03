@@ -3,7 +3,7 @@ name: Release Zip CI
 on:
   push:
     tags:
-      - "*.*.*.*"
+      - "*.*.*"
 
 jobs:
   Build:
@@ -61,7 +61,7 @@ jobs:
         draft: false
         prerelease: false
     - name: Upload Release Asset x64
-      id: upload-release-asset 
+      id: upload-release-asset-x64 
       uses: actions/upload-release-asset@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -71,7 +71,7 @@ jobs:
         asset_name: Alpine.zip
         asset_content_type: application/zip
     - name: Upload Release Asset arm64
-      id: upload-release-asset 
+      id: upload-release-asset-arm64
       uses: actions/upload-release-asset@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
