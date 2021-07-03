@@ -1,0 +1,82 @@
+name: Release Zip CI
+
+on:
+  push:
+    tags:
+      - "*.*.*.*"
+
+jobs:
+  Build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@main
+    - name: Install dependencies for build (Apt)
+      shell: bash
+      run: |
+        sudo env DEBIAN_FRONTEND=noninteractive apt update -y && \
+        sudo env DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends libarchive-tools curl jq tree
+    - name: Build Zip x64
+      shell: bash
+      env:
+        ARCH: 'x64'
+        OUT_ZIP: 'Alpine.zip'
+      run: make -e && tree
+    - name: Build Zip ARM64
+      shell: bash
+      env:
+        ARCH: 'arm64'
+        OUT_ZIP: 'Alpine_arm64.zip'
+      run: make -e && tree
+    - name: Upload a Build Artifact x64
+      uses: actions/upload-artifact@main
+      with:
+        name: Alpine.zip
+        path: ./Alpine.zip
+    - name: Upload a Build Artifact ARM64
+      uses: actions/upload-artifact@main
+      with:
+        name: Alpine_arm64.zip
+        path: ./Alpine_arm64.zip
+
+  Release:
+    needs: [Build]
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Download Build Artifact x64
+      uses: actions/download-artifact@main
+      with:
+        name: Alpine.zip
+    - name: Download Build Artifact arm64
+      uses: actions/download-artifact@main
+      with:
+        name: Alpine_arm64.zip
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset x64
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: Alpine.zip
+        asset_name: Alpine.zip
+        asset_content_type: application/zip
+    - name: Upload Release Asset arm64
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: Alpine_arm64.zip
+        asset_name: Alpine_arm64.zip
+        asset_content_type: application/zip

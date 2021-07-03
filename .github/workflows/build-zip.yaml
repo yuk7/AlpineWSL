@@ -1,0 +1,40 @@
+name: Build Zip CI
+
+on:
+  push:
+    branches: [ 'main' ]
+  pull_request: 
+    branches: [ 'main' ]
+
+jobs:
+  Build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@main
+    - name: Install dependencies for build (Apt)
+      shell: bash
+      run: |
+        sudo env DEBIAN_FRONTEND=noninteractive apt update -y && \
+        sudo env DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends libarchive-tools curl jq tree
+    - name: Build Zip x64
+      shell: bash
+      env:
+        ARCH: 'x64'
+        OUT_ZIP: 'Alpine.zip'
+      run: make -e && tree
+    - name: Build Zip ARM64
+      shell: bash
+      env:
+        ARCH: 'arm64'
+        OUT_ZIP: 'Alpine_arm64.zip'
+      run: make -e && tree
+    - name: Upload a Build Artifact x64
+      uses: actions/upload-artifact@main
+      with:
+        name: Alpine.zip
+        path: ./Alpine.zip
+    - name: Upload a Build Artifact ARM64
+      uses: actions/upload-artifact@main
+      with:
+        name: Alpine_arm64.zip
+        path: ./Alpine_arm64.zip
