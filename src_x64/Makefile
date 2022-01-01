@@ -4,7 +4,7 @@ LNCR_EXE=Alpine.exe
 DLR=curl
 DLR_FLAGS=-L
 BASE_URL=https://dl-cdn.alpinelinux.org/alpine/v3.15/releases/x86_64/alpine-minirootfs-3.15.0-x86_64.tar.gz
-LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/21071600/icons.zip
+LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/21082800/icons.zip
 LNCR_ZIP_EXE=Alpine.exe
 
 all: $(OUT_ZIP)
