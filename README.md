@@ -4,7 +4,7 @@ based on [wsldl](https://github.com/yuk7/wsldl)
 
 ![screenshot](https://raw.githubusercontent.com/wiki/yuk7/wsldl/img/Alpine_Arch_Cent.png)
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/yuk7/AlpineWSL/Build%20Zip%20CI?style=flat-square)](https://github.com/yuk7/AlpineWSL/actions/workflows/build-zip.yaml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/yuk7/AlpineWSL/build-zip.yaml?style=flat-square)](https://github.com/yuk7/AlpineWSL/actions/workflows/build-zip.yaml)
 [![Github All Releases](https://img.shields.io/github/downloads/yuk7/AlpineWSL/total.svg?style=flat-square)](https://github.com/yuk7/AlpineWSL/releases/latest)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![License](https://img.shields.io/github/license/yuk7/AlpineWSL.svg?style=flat-square)
