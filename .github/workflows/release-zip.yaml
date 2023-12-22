@@ -20,13 +20,13 @@ jobs:
       env:
         ARCH: 'x64'
         OUT_ZIP: 'Alpine.zip'
-      run: make -e && tree
+      run: cd src_x64 && make -j$(nproc) -e && mv Alpine.zip ../
     - name: Build Zip ARM64
       shell: bash
       env:
         ARCH: 'arm64'
         OUT_ZIP: 'Alpine_arm64.zip'
-      run: make -e && tree
+      run: cd src_arm64 && make -j$(nproc) -e && mv Alpine_arm64.zip ../
     - name: Upload a Build Artifact x64
       uses: actions/upload-artifact@main
       with:
