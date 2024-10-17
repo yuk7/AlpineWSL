@@ -94,3 +94,4 @@ $ make ARCH=arm64 OUT_ZIP=Alpine_arm64.zip
 |  DLR  |  file downloader  | curl |
 |  DLR_FLAGS  |  downloader flags  | -L |
 |  BASE_URL  |  base rootfs url  | https:~ |
+|  ROOTFS_TARBALL_CKSM_URL  |  sha-sum for the base rootfs tarball  |  https:~ |
