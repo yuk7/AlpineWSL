@@ -24,7 +24,7 @@ jobs:
       run: |
         make -e
         sha256sum Alpine.zip | tee Alpine.zip.sha256
-        tree
+        ls -la
     - name: Build Zip ARM64
       shell: bash
       env:
@@ -33,7 +33,7 @@ jobs:
       run: |
         make -e
         sha256sum Alpine_arm64.zip | tee Alpine_arm64.zip.sha256
-        tree
+        ls -la
     - name: Upload a Build Artifact x64
       uses: actions/upload-artifact@main
       with:
