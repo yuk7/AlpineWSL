@@ -8,7 +8,7 @@ on:
 
 jobs:
   Build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@main
     - name: Install dependencies for build (Apt)
@@ -21,20 +21,36 @@ jobs:
       env:
         ARCH: 'x64'
         OUT_ZIP: 'Alpine.zip'
-      run: make -e && tree
+      run: |
+        make -e
+        sha256sum Alpine.zip | tee Alpine.zip.sha256
+        tree
     - name: Build Zip ARM64
       shell: bash
       env:
         ARCH: 'arm64'
         OUT_ZIP: 'Alpine_arm64.zip'
-      run: make -e && tree
+      run: |
+        make -e
+        sha256sum Alpine_arm64.zip | tee Alpine_arm64.zip.sha256
+        tree
     - name: Upload a Build Artifact x64
       uses: actions/upload-artifact@main
       with:
         name: Alpine.zip
         path: ./Alpine.zip
+    - name: Upload SHA256 Checksum x64
+      uses: actions/upload-artifact@main
+      with:
+        name: Alpine.zip.sha256
+        path: ./Alpine.zip.sha256
     - name: Upload a Build Artifact ARM64
       uses: actions/upload-artifact@main
       with:
         name: Alpine_arm64.zip
         path: ./Alpine_arm64.zip
+    - name: Upload SHA256 Checksum ARM64
+      uses: actions/upload-artifact@main
+      with:
+        name: Alpine_arm64.zip.sha256
+        path: ./Alpine_arm64.zip.sha256

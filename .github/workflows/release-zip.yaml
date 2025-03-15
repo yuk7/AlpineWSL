@@ -7,7 +7,7 @@ on:
 
 jobs:
   Build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@main
     - name: Install dependencies for build (Apt)
@@ -20,36 +20,54 @@ jobs:
       env:
         ARCH: 'x64'
         OUT_ZIP: 'Alpine.zip'
-      run: cd src_x64 && make -j$(nproc) -e && mv Alpine.zip ../
+      run: cd src_x64 && make -j$(nproc) -e && sha256sum Alpine.zip | tee Alpine.zip.sha256 && mv Alpine.zip Alpine.zip.sha256 ../
     - name: Build Zip ARM64
       shell: bash
       env:
         ARCH: 'arm64'
         OUT_ZIP: 'Alpine_arm64.zip'
-      run: cd src_arm64 && make -j$(nproc) -e && mv Alpine_arm64.zip ../
+      run: cd src_arm64 && make -j$(nproc) -e && sha256sum Alpine_arm64.zip | tee Alpine_arm64.zip.sha256 && mv Alpine_arm64.zip Alpine_arm64.zip.sha256 ../
     - name: Upload a Build Artifact x64
       uses: actions/upload-artifact@main
       with:
         name: Alpine.zip
         path: ./Alpine.zip
+    - name: Upload SHA256 Checksum x64
+      uses: actions/upload-artifact@main
+      with:
+        name: Alpine.zip.sha256
+        path: ./Alpine.zip.sha256
     - name: Upload a Build Artifact ARM64
       uses: actions/upload-artifact@main
       with:
         name: Alpine_arm64.zip
         path: ./Alpine_arm64.zip
+    - name: Upload SHA256 Checksum ARM64
+      uses: actions/upload-artifact@main
+      with:
+        name: Alpine_arm64.zip.sha256
+        path: ./Alpine_arm64.zip.sha256
 
   Release:
     needs: [Build]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
     - name: Download Build Artifact x64
       uses: actions/download-artifact@main
       with:
         name: Alpine.zip
+    - name: Download SHA256 Checksum x64
+      uses: actions/download-artifact@main
+      with:
+        name: Alpine.zip.sha256
     - name: Download Build Artifact arm64
       uses: actions/download-artifact@main
       with:
         name: Alpine_arm64.zip
+    - name: Download SHA256 Checksum arm64
+      uses: actions/download-artifact@main
+      with:
+        name: Alpine_arm64.zip.sha256
     - name: Create release
       id: create_release
       uses: actions/create-release@main
@@ -70,6 +88,16 @@ jobs:
         asset_path: Alpine.zip
         asset_name: Alpine.zip
         asset_content_type: application/zip
+    - name: Upload Release Asset SHA256 Checksum x64
+      id: upload-release-asset-sha256-x64
+      uses: actions/upload-release-asset@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: Alpine.zip.sha256
+        asset_name: Alpine.zip.sha256
+        asset_content_type: text/plain
     - name: Upload Release Asset arm64
       id: upload-release-asset-arm64
       uses: actions/upload-release-asset@main
@@ -80,3 +108,13 @@ jobs:
         asset_path: Alpine_arm64.zip
         asset_name: Alpine_arm64.zip
         asset_content_type: application/zip
+    - name: Upload Release Asset SHA256 Checksum arm64
+      id: upload-release-asset-sha256-arm64
+      uses: actions/upload-release-asset@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: Alpine_arm64.zip.sha256
+        asset_name: Alpine_arm64.zip.sha256
+        asset_content_type: text/plain
